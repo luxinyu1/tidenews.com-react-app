@@ -20,8 +20,9 @@ function User (props) {
             <AdminSider props={props} selectedKeys={['user']} />
             <Layout>
                 <Content style={{ margin: '0 16px' }}>
-                <Breadcrumb style={{ margin: '16px 0' }}>
-                    <Breadcrumb.Item>/admin/user</Breadcrumb.Item>
+                <Breadcrumb separator=">" style={{ margin: '16px 0' }}>
+                    <Breadcrumb.Item>admin</Breadcrumb.Item>
+                    <Breadcrumb.Item>user</Breadcrumb.Item>
                 </Breadcrumb>
                 <Row style={{ minHeight: 360 }} type="flex" justify="start">
                     <Col xs={0} sm={0} md={24} lg={16} xl={12} xxl={12} style={{ marginRight:5 }}>

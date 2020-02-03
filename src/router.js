@@ -5,6 +5,8 @@ import About from './pages/about/about';
 import Admin from './pages/admin/admin';
 import General from './pages/admin/general/general';
 import User from './pages/admin/user/user';
+import Review from './pages/admin/review/review';
+import Write from './pages/admin/write/write'
 
 class AppRouter extends React.Component {
 	render() {
@@ -15,6 +17,8 @@ class AppRouter extends React.Component {
 					<Route path='/admin' component={Admin} exact />
 					<Route path="/admin/general" component={General} exact />
 					<Route path="/admin/user" component={User} exact />
+					<Route path="/admin/review" component={Review} exact />
+					<Route path="/admin/write" component={Write} exact />
 				</Switch>
 			</Router>
 		);

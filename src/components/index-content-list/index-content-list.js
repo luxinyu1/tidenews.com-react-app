@@ -25,12 +25,13 @@ class ContentBlock extends React.Component {
     componentDidMount(){
         this.getList();
     }
+
     render() {
         return (
             <List grid={{ column:4 }} dataSource={this.state.data}
                 renderItem={item => (
                 <List.Item>
-                    <Card hoverable="Ture" cover={<img alt={item.coveralt} src={item.cover_url}/>}>
+                    <Card hoverable cover={<img alt={item.coveralt} src={item.cover_url}/>}>
                         <h3><strong>{item.title}</strong></h3>
                         <Text type="secondary">{item.summary}</Text>
                         <Tag color="lime">lime</Tag>

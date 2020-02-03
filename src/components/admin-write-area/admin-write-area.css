@@ -1,0 +1,21 @@
+.admin-write-area-title-input {
+    margin-bottom: 10px;
+}
+
+.admin-write-area-summary-input {
+    margin-top: 10px;
+}
+
+.admin-write-area-tag-select {
+    margin-top: 10px;
+}
+
+.admin-write-area-cat-radio {
+    margin-top: 10px;
+}
+
+.admin-write-area-button {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    float: right;
+}

@@ -2,11 +2,10 @@ import React from 'react';
 import { Layout, Breadcrumb, Row, Col } from 'antd';
 import { Helmet } from 'react-helmet';
 import AdminSider from '../../../components/admin-sider/admin-sider';
-import AdminGeneralToday from '../../../components/admin-general-today/admin-general-today';
 
 const { Content, Footer } = Layout;
 
-function General (props) {
+function Review (props) {
     return (
         <>
         <Helmet>
@@ -15,16 +14,16 @@ function General (props) {
         <link rel='icon' href='./favicon.ico'/>
         </Helmet>
         <Layout style={{ minHeight: '100vh' }}>
-            <AdminSider props={props} selectedKeys={['general']} />
+            <AdminSider props={props} openKeys={['content']} selectedKeys={['review']} />
             <Layout>
                 <Content style={{ margin: '0 16px' }}>
                 <Breadcrumb separator=">" style={{ margin: '16px 0' }}>
                     <Breadcrumb.Item>admin</Breadcrumb.Item>
-                    <Breadcrumb.Item>general</Breadcrumb.Item>
+                    <Breadcrumb.Item>content</Breadcrumb.Item>
+                    <Breadcrumb.Item>review</Breadcrumb.Item>
                 </Breadcrumb>
                 <Row style={{ minHeight: 360 }} type="flex" justify="start">
                     <Col xs={0} sm={0} md={24} lg={16} xl={12} xxl={12} style={{ marginRight:5 }}>
-                        <AdminGeneralToday />
                     </Col>
                     <Col xs={12} sm={12} md={8} lg={8} xl={8} xxl={6} style={{ marginLeft:5 }}>
                     </Col>
@@ -37,4 +36,4 @@ function General (props) {
     );
 }
 
-export default General;
+export default Review;
