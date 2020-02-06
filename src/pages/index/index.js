@@ -1,10 +1,11 @@
 import React from 'react';
-import { Row, Col, Layout } from 'antd';
+import { Row, Col, Layout, BackTop } from 'antd';
 import { Helmet } from 'react-helmet';
 import Nav from '../../components/nav/nav';
 import IndexHeadlineCarousel from '../../components/index-headline-carousel/index-headline-carousel';
 import LoginBlock from '../../components/login-block/login-block';
 import IndexContentList from '../../components/index-content-list/index-content-list';
+import MyBackTop from '../../components/back-top/back-top';
 import './index.css';
 
 const { Footer } = Layout;
@@ -35,6 +36,7 @@ function Index(props){
                 </Col>
             </Row>
             <Footer style={{ textAlign: 'center' }}>Ant Design ©2018 Created by Ant UED</Footer>
+            <MyBackTop />
         </>
     );
 }

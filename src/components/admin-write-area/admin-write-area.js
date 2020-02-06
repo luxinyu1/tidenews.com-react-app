@@ -25,8 +25,18 @@ class AdminWriteArea extends React.Component {
         this.handleRadioChange = this.handleRadioChange.bind(this);
         this.submitAll = this.submitAll.bind(this);
     }
-    getcid () {
-        axios.get();
+    componentDidMount () {
+        this.getCid();
+    }
+    getCid () {
+        axios.get('http://localhost:7001/api/cid/new').then( // 上线前修改
+            (res) => {
+                this.setState({
+                    cid: res.data,
+                });
+                console.log(this.state.cid);
+            }
+        );
     }
     handleEditorChange = (result, HTML) => {
         // 通过给子组件传递父组件的this，就实现了子组件获得父组件函数的方法
@@ -54,20 +64,31 @@ class AdminWriteArea extends React.Component {
             category: e.target.value
         });
     }
-    getFormatDate () {
-        const date = new Date();
-        const seperator = "-";
-        let year = date.getFullYear();
-        let month = date.getMonth() + 1;
-        let strDate = date.getDate();
+    getFormatDateTime () {
+        const now = new Date();
+        let year = now.getFullYear();
+        let month = now.getMonth() + 1;
+        let strDate = now.getDate();
+        let hour = now.getHours();
+        let min = now.getMinutes();
+        let sec = now.getSeconds();
         if (month >= 1 && month <= 9) {
             month = "0" + month;
         }
         if (strDate >= 0 && strDate <= 9) {
             strDate = "0" + strDate;
         }
-        const currentDate = year + seperator + month + seperator + strDate;
-        return currentDate;
+        if (hour >= 0 && hour <= 9) {
+            hour = "0" + hour;
+        }
+        if (min >= 0 && min <= 9) {
+            min = "0" + min;
+        }
+        if (sec >= 0 && sec <= 9) {
+            sec = "0" + sec;
+        }
+        const currentDateTime = year + "-" + month + "-" + strDate + " " + hour + ":" + min + ":" + sec;
+        return currentDateTime;
     }
     submitAll () {
         if (!this.state.title) {
@@ -76,16 +97,32 @@ class AdminWriteArea extends React.Component {
         } else if (!this.state.EditorHTML) {
             message.error('文章内容为必填项');
             return false;
-        } else {
-            const currentDate = this.getForamtDate();
-            const dataprops = {
+        } else { 
+            const currentDateTime = this.getFormatDateTime();
+            const dataProps = {
                 cid: this.state.cid,
                 title: this.state.title,
-                xml: this.state.EditorHTML,
+                time: currentDateTime,
+                html: this.state.EditorHTML,
                 summary: this.state.summary,
-                tag: this.state.tags,
+                tags: this.state.tags.toString(),
                 category: this.state.category
-            }; // 传到接口的参数
+            };
+            axios({
+                method:'POST',
+                url:'http://127.0.0.1:7001/api/article/new', // 上线前修改
+                data: dataProps,
+                withCredentials: true
+            }).then(
+                res=>{
+                    console.log(res);
+                    if(res.data){
+                        message.success('内容保存成功')
+                    } else {
+                        message.error('内容保存失败');
+                    }
+                }
+            )
         }
     }
     render(){
@@ -101,7 +138,7 @@ class AdminWriteArea extends React.Component {
                     <TextArea
                     placeholder="在这里输入文章的描述简介"
                     autoSize={{ maxRows: 2 }}
-                    onChange=""
+                    onChange={this.handleSummaryChange}
                     />
                 </div>
                 <div className="admin-write-area-tag-select">
@@ -131,4 +168,4 @@ class AdminWriteArea extends React.Component {
     }
 }
 
-export default AdminWriteArea
+export default AdminWriteArea;

@@ -2,3 +2,11 @@
     float: left;
     height: 40px
 }
+
+.nav-search {
+    margin-left:30px;
+    width: 200px;
+}
+nav-about {
+    float: right;
+}

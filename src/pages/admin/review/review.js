@@ -1,7 +1,8 @@
 import React from 'react';
-import { Layout, Breadcrumb, Row, Col } from 'antd';
+import { Layout, Breadcrumb, Row } from 'antd';
 import { Helmet } from 'react-helmet';
 import AdminSider from '../../../components/admin-sider/admin-sider';
+import AdminReviewTableTransfer from '../../../components/admin-review-table-transfer/admin-review-table-transfer';
 
 const { Content, Footer } = Layout;
 
@@ -23,10 +24,7 @@ function Review (props) {
                     <Breadcrumb.Item>review</Breadcrumb.Item>
                 </Breadcrumb>
                 <Row style={{ minHeight: 360 }} type="flex" justify="start">
-                    <Col xs={0} sm={0} md={24} lg={16} xl={12} xxl={12} style={{ marginRight:5 }}>
-                    </Col>
-                    <Col xs={12} sm={12} md={8} lg={8} xl={8} xxl={6} style={{ marginLeft:5 }}>
-                    </Col>
+                    <AdminReviewTableTransfer />
                 </Row>
                 </Content>
                 <Footer style={{ textAlign: 'center' }}>Ant Design ©2018 Created by Ant UED</Footer>
