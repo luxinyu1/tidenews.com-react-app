@@ -52,18 +52,18 @@ class LoginBlock extends React.Component {
             <div className="form-block">
                 <Spin tip="加载中..." spinning={this.state.isLoading} />
                 <Form onSubmit={this.handleSubmit} className="login-form">
-                    <div style={{marginBottom:5}}>
+                    <div style={{marginBottom:5,fontSize:18}}>
                         <Text mark>&nbsp;&nbsp;</Text>
                         <Text strong>&nbsp;&nbsp;登录/注册</Text>
                     </div>
                     <div style={{minHeight:12}}>
                     {this.state.alertVisible ? (
-                      <Alert
-                        message="用户名或密码错误"
-                        type="error"
-                        closable
-                        afterClose={this.handleClose}
-                      />
+                        <Alert
+                            message="用户名或密码错误"
+                            type="error"
+                            closable
+                            afterClose={this.handleClose}
+                        />
                     ) : null}
                     </div>
                     <Form.Item>
@@ -80,14 +80,16 @@ class LoginBlock extends React.Component {
                         <Input.Password prefix={<Icon type="lock" style={{ color: 'rgba(0,0,0,.25)' }} />} type="password" placeholder="密码"/>,
                     )}
                     </Form.Item>
-                    <Button type="primary" htmlType="submit" block>
+                    <Button type="primary" shape="round" htmlType="submit" block>
                         <Icon type="login"/>
                         登录
                     </Button>
-                    <Button block style={{marginTop:8}}>
-                        <Icon type="user-add"/>
-                        注册
-                    </Button>
+                    <a href="/register" target="_self" rel="noopener noreferrer">
+                        <Button shape="round" style={{marginTop:8}} block>
+                            <Icon type="user-add"/>
+                            注册
+                        </Button>
+                    </a>
                 </Form>
             </div>
         );
