@@ -30,7 +30,6 @@ class LoginBlock extends React.Component {
                     method: 'post',
                     url: 'http://localhost:7001/api/login', // 上线后修改
                     data: values,
-                    withCredentials: true
                 }).then(
                     res=>{
                         this.setIsLoading(false);

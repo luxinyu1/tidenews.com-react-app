@@ -1,5 +1,5 @@
 import React from 'react';
-import { Typography } from 'antd';
+import { Typography, Divider } from 'antd';
 import axios from 'axios';
 import './index-ai-weather.css';
 
@@ -9,18 +9,36 @@ class IndexAIWeather extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            url: 'https://aip.baidubce.com/rest/2.0/nlp/v1/gen_article?access_token=24.f4eb3f174ef50b647a010ed0d66ec4e8.2592000.1584675352.282335-18517402'
+            title: '',
+            texts: ''
         }
     }
     componentDidMount() {
-
+        let dataProps = {
+            'city': '苏州'
+        }
+        axios({
+            method: 'post',
+            url: 'http://127.0.0.1:7001/api/weather', // 上线前修改
+            data: dataProps,
+        }).then(
+            res=>{
+                let reg = /<p>/;
+                let title = res.data.result.title.replace(reg, '');
+                reg = /<\/p>/;
+                title = title.replace(reg, '');
+                this.setState({
+                    title
+                });
+            }
+        )
     }
     render() {
         return(
             <div className="index-ai-weather">
-                <div style={{marginBottom:5,fontSize:18}}>
-                    <Text mark>&nbsp;&nbsp;</Text>
-                    <Text strong>&nbsp;&nbsp;AI天气</Text>
+                <div style={{marginBottom:5,fontSize:16}}>
+                    {this.state.title}
+                    <Divider/>
                 </div>
             </div>
         );

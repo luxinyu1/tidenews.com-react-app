@@ -10,6 +10,7 @@
 
 .login-block {
     background-color: #FFF;
+    margin-left: .5rem;
 }
 
 .index-content-list {
@@ -18,4 +19,5 @@
 
 .hot-spot-list {
     background-color: #FFF;
+    margin-left: .5rem;
 }
